@@ -1,4 +1,4 @@
-# Transform PHP Vars to JavaScript
+# Origami API Package
 
 This package simplifies the process of setting up an API using Laravel 5. Many of the practices utilised in this package are courtesy of [Build APIs you Won’t Hate](https://leanpub.com/build-apis-you-wont-hate) by Phil Sturgeon.
 
