@@ -1,6 +1,7 @@
 <?php namespace Origami\Api;
 
 use Illuminate\Contracts\Routing\ResponseFactory as Factory;
+use Illuminate\Contracts\Support\MessageBag;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class Response {
@@ -85,8 +86,24 @@ class Response {
 				'http_code' => $http_code,
 				'message' => $message
 			]
-		]);
+		], $http_code);
 
+	}
+
+	public function errorValidation($errors, $message = 'Validation failed')
+	{
+		if ( $errors instanceof MessageBag ) {
+			$errors->toArray();
+		}
+
+		return $this->make([
+			'error' => [
+				'code' => self::ERROR_REQUEST,
+				'http_code' => self::STATUS_VALIDATION_ERROR,
+				'message' => $message,
+				'fields' => $errors,
+			],
+		], self::STATUS_VALIDATION_ERROR);
 	}
 
 	public function errorForbidden($message = 'Access Forbidden')
