@@ -41,7 +41,7 @@ class ApiServiceProvider extends ServiceProvider {
             __DIR__.'/../config/api.php', 'api'
         );
 
-        $this->app->bindShared('Origami\Api\Api', function()
+        $this->app->singleton('Origami\Api\Api', function()
         {
             $config = app('config')->get('api', []);
             $response = app('Origami\Api\Response');
