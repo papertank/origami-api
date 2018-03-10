@@ -1,4 +1,6 @@
-<?php namespace Origami\Api\Pagination;
+<?php
+
+namespace Origami\Api\Pagination;
 
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use League\Fractal\Pagination\PaginatorInterface;

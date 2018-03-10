@@ -1,5 +1,5 @@
 <?php
-return array(
+return [
 
 	'version' => '1',
 
@@ -11,4 +11,4 @@ return array(
 		env('API_KEY', 'secret')
 	],
 
-);
+];

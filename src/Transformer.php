@@ -1,4 +1,6 @@
-<?php namespace Origami\Api;
+<?php
+
+namespace Origami\Api;
 
 use League\Fractal\TransformerAbstract;
 

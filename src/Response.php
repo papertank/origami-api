@@ -1,21 +1,22 @@
-<?php namespace Origami\Api;
+<?php
+
+namespace Origami\Api;
 
 use Illuminate\Contracts\Routing\ResponseFactory as Factory;
 use Illuminate\Contracts\Support\MessageBag;
-use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class Response {
 
     use TransformResources;
 
-	const STATUS_OK = SymfonyResponse::HTTP_OK;
-    const STATUS_NOT_FOUND = SymfonyResponse::HTTP_NOT_FOUND;
-    const STATUS_INTERNAL_ERROR = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
-    const STATUS_UNKNOWN_ERROR = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
-    const STATUS_BAD_REQUEST = SymfonyResponse::HTTP_BAD_REQUEST;
-    const STATUS_UNAUTHORIZED = SymfonyResponse::HTTP_UNAUTHORIZED;
-    const STATUS_OFFLINE = SymfonyResponse::HTTP_SERVICE_UNAVAILABLE;
-    const STATUS_GONE = SymfonyResponse::HTTP_GONE;
+	const STATUS_OK = 200;
+    const STATUS_NOT_FOUND = 404;
+    const STATUS_INTERNAL_ERROR = 500;
+    const STATUS_UNKNOWN_ERROR = 500;
+    const STATUS_BAD_REQUEST = 400;
+    const STATUS_UNAUTHORIZED = 401;
+    const STATUS_OFFLINE = 503;
+    const STATUS_GONE = 410;
     const STATUS_VALIDATION_ERROR = 400;
 
     const ERROR_DEFAULT = 10;

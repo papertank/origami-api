@@ -6,13 +6,7 @@ This package simplifies the process of setting up an API using Laravel 5. Many o
 
 Install this package through Composer.
 
-```js
-{
-    “require”: {
-		“origami/api”: “~1.0”
-	}
-}
-```
+`composer require origami/api`
 
 ### Requirements
 
@@ -75,10 +69,6 @@ This is the valid list of API keys that authenticate requests. By default we sup
 
 This package includes two Middleware classes for Laravel 5
 
-### Origami\Api\Middleware\Stateless
-
-The **Stateless** Middleware is called by default in our **ApiController** base controller is simply designed to set the default session driver to `array`.
-
 ### Origami\Api\Middleware\AuthenticateApiKey
 
 The **AuthenticateApiKey** Middleware is designed to guard Api routes against unauthorised access. We recommend you include it on all routes as follows, unless you have a public API.
@@ -106,19 +96,19 @@ You can use the API Response class in your controller by using the `response` he
 	public function index()
 	{
 		$items = new Collection([‘one’,’two’,’three’]);
-		
+
 		// Calling with a single argument returns a json response
 		return $this->response($items);
 	}
 ```
 
-or 
+or
 
 ```php
 	public function index()
 	{
 		$items = new Collection([‘one’,’two’,’three’]);
-		
+
 		// Calling with no argument returns the response object
 		return $this->response()->data($items);
 	}
@@ -130,7 +120,7 @@ or
 		if ( ! $item ) {
 			// Using the response object you can call helper methods.
 			return $this->response()->errorNotFound();
-		} 
+		}
 
 		return $this->response()->data($item);
 	}
@@ -140,7 +130,7 @@ or
 
 We make use of the excellent [league/fractal](https://github.com/thephpleague/fractal) PHP package to parse and transform Eloquent models and collections. For more information visit [fractal.thephpleague.com](http://fractal.thephpleague.com/)
 
-There are three helper methods on the response object 
+There are three helper methods on the response object
 
 * resourceItem
 * resourceCollection
@@ -171,7 +161,7 @@ class Items extends ApiController {
 	public function index()
 	{
 		$items = Item::paginate(15);
-		
+
 		return $this->response()->resourcePaginator($items, new ItemTransformer);
 	}
 

@@ -1,8 +1,11 @@
-<?php namespace Origami\Api;
+<?php
 
+namespace Origami\Api;
+
+use League\Fractal\Manager;
 use Illuminate\Http\Response;
 use Illuminate\Support\ServiceProvider;
-use League\Fractal\Manager;
+use Illuminate\Support\Facades\Response;
 
 class ApiServiceProvider extends ServiceProvider {
 
@@ -24,7 +27,7 @@ class ApiServiceProvider extends ServiceProvider {
             __DIR__.'/../config/api.php' => config_path('api.php'),
         ]);
 
-        app('Illuminate\Contracts\Routing\ResponseFactory')->macro('api', function()
+        Response::macro('api', function()
         {
             return app('api');
         });

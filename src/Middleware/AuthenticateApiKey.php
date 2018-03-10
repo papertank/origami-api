@@ -1,8 +1,9 @@
-<?php namespace Origami\Api\Middleware;
+<?php
+
+namespace Origami\Api\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Config\Repository as Config;
 use Origami\Api\Api;
 
 class AuthenticateApiKey {

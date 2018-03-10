@@ -1,7 +1,8 @@
-<?php namespace Origami\Api;
+<?php
+
+namespace Origami\Api;
 
 use Exception;
-use Illuminate\Support\Facades\Input;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
