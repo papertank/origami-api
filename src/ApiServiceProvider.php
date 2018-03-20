@@ -3,7 +3,6 @@
 namespace Origami\Api;
 
 use League\Fractal\Manager;
-use Illuminate\Http\Response;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Response;
 
