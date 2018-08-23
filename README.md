@@ -40,26 +40,12 @@ This will add a new configuration file to: `config/api.php`.
 <?php
 return array(
 
-	‘version’ => ‘1’,
-
-	‘route’ => [
-		‘v1’ => [ ‘prefix’ => ‘api/v1’ ]
-	],
-
 	‘keys’ => [
 		env(‘API_KEY’, ‘secret’)
 	],
 
 );
 ```
-
-#### version
-
-This is the current version of your api
-
-#### route
-
-This array of arrays helps when setting up routes in your Laravel `routes.php` file. We adopt a prefix of api/v1 by default.
 
 #### keys
 

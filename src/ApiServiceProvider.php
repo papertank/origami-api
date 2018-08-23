@@ -6,7 +6,8 @@ use League\Fractal\Manager;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Response;
 
-class ApiServiceProvider extends ServiceProvider {
+class ApiServiceProvider extends ServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -26,8 +27,7 @@ class ApiServiceProvider extends ServiceProvider {
             __DIR__.'/../config/api.php' => config_path('api.php'),
         ]);
 
-        Response::macro('api', function()
-        {
+        Response::macro('api', function () {
             return app('api');
         });
     }
@@ -40,16 +40,22 @@ class ApiServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/api.php', 'api'
+            __DIR__.'/../config/api.php',
+            'api'
         );
 
-        $this->app->singleton('Origami\Api\Api', function()
-        {
+        $this->app->singleton('Origami\Api\Api', function () {
             $config = app('config')->get('api', []);
             $response = app('Origami\Api\Response');
             $request = app('Illuminate\Http\Request');
 
-            return new Api($config, $request, $response);
+            $api = new Api($config, $request, $response);
+
+            if (isset($config['versions']['all'])) {
+                $api->detectVersions();
+            }
+
+            return $api;
         });
 
         $this->app->bind('api', 'Origami\Api\Api');
@@ -64,5 +70,4 @@ class ApiServiceProvider extends ServiceProvider {
     {
         return array('api');
     }
-
 }

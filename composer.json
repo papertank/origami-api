@@ -13,7 +13,8 @@
         "illuminate/support": "~5.5",
         "illuminate/contracts": "~5.5",
         "illuminate/http": "~5.5",
-        "league/fractal": "0.17.*"
+        "league/fractal": "0.17.*",
+        "nesbot/carbon": "1.25.*"
     },
     "autoload": {
         "psr-4": {
@@ -25,7 +26,15 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.4-dev"
+            "dev-master": "1.5-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Origami\\Api\\ApiServiceProvider"
+            ],
+            "aliases": {
+                "Api": "Origami\\Api\\ApiFacade"
+            }
         }
     },
     "minimum-stability": "dev"
