@@ -14,7 +14,7 @@
         "illuminate/contracts": "~5.5",
         "illuminate/http": "~5.5",
         "league/fractal": "0.17.*",
-        "nesbot/carbon": "1.25.*"
+        "nesbot/carbon": "~1.26"
     },
     "autoload": {
         "psr-4": {
