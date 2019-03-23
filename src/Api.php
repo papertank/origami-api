@@ -82,8 +82,12 @@ class Api
             return $this->response()->errorNotFound($e->getMessage() ? : 'Not Found');
         }
 
-        if ($e instanceof AuthorizationException || $e instanceof AuthenticationException) {
+        if ($e instanceof AuthorizationException) {
             return $this->response()->errorForbidden($e->getMessage());
+        }
+
+        if ($e instanceof AuthenticationException) {
+            return $this->response()->errorUnauthorized($e->getMessage());
         }
 
         if ($e instanceof MethodNotAllowedHttpException) {
