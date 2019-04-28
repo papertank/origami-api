@@ -3,10 +3,8 @@
 namespace Origami\Api;
 
 use Exception;
-use Origami\Api\Version;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
-use Origami\Api\VersionsCollection;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -18,7 +16,6 @@ use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Api
 {
-
     /**
      * @var array
      */
@@ -75,11 +72,11 @@ class Api
         }
 
         if ($e instanceof ValidationException) {
-            return $this->response()->errorValidation($e->validator->errors(), implode(', ', $e->validator->errors()->all('')));
+            return $this->response()->errorValidation($e->validator->errors(), implode(' ', $e->validator->errors()->all('')));
         }
 
         if ($e instanceof NotFoundHttpException || $e instanceof ModelNotFoundException) {
-            return $this->response()->errorNotFound($e->getMessage() ? : 'Not Found');
+            return $this->response()->errorNotFound($e->getMessage() ?: 'Not Found');
         }
 
         if ($e instanceof AuthorizationException) {
@@ -129,6 +126,7 @@ class Api
     {
         if ($version instanceof Version) {
             $this->currentVersion = $version;
+
             return $this;
         }
 
@@ -152,6 +150,7 @@ class Api
     {
         if ($version instanceof Version) {
             $this->defaultVersion = $version;
+
             return $this;
         }
 
@@ -179,10 +178,10 @@ class Api
                             ->mapWithKeys(function ($date) {
                                 return [$date => new Version($date)];
                             });
-        
+
         return $this;
     }
-    
+
     public function detectVersions()
     {
         $versions = $this->config('versions.all');
