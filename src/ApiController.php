@@ -12,10 +12,10 @@ class ApiController extends Controller {
     public function response($data = null)
     {
         if ( ! is_null($data) ) {
-            return app('api')->response()->data($data);
+            return app('origami.api')->response()->data($data);
         }
 
-        return app('api')->response();
+        return app('origami.api')->response();
     }
 
 }

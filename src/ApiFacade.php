@@ -13,6 +13,6 @@ class ApiFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'api';
+        return 'origami.api';
     }
 }

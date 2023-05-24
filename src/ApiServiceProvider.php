@@ -27,8 +27,12 @@ class ApiServiceProvider extends ServiceProvider
             __DIR__.'/../config/api.php' => config_path('api.php'),
         ]);
 
-        Response::macro('api', function () {
-            return app('api');
+        Response::macro('api', function ($content = '', $code = 200, array $headers = []) {
+            $factory = app('origami.api')->response();
+            if (func_num_args() == 0) {
+                return $factory;
+            }
+            return $factory->make($content, $code, $headers);
         });
     }
 
@@ -58,7 +62,7 @@ class ApiServiceProvider extends ServiceProvider
             return $api;
         });
 
-        $this->app->bind('api', 'Origami\Api\Api');
+        $this->app->bind('origami.api', 'Origami\Api\Api');
     }
 
     /**
@@ -68,6 +72,6 @@ class ApiServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('api');
+        return ['origami.api'];
     }
 }
