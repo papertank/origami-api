@@ -1,6 +1,6 @@
 # Origami API Package
 
-This package simplifies the process of setting up an API using Laravel 5. Many of the practices utilised in this package are courtesy of [Build APIs you Won’t Hate](https://leanpub.com/build-apis-you-wont-hate) by Phil Sturgeon.
+This package simplifies the process of setting up an API using Laravel 6. Many of the practices utilised in this package are courtesy of [Build APIs you Won’t Hate](https://leanpub.com/build-apis-you-wont-hate) by Phil Sturgeon.
 
 ## Installation
 
@@ -10,11 +10,11 @@ Install this package through Composer.
 
 ### Requirements
 
-This package is designed to work with Laravel >= 5 currently.
+This package is designed to work with Laravel >= 6 currently.
 
 ### Service Provider
 
-As standard, there is a Laravel 5 is a service provider you can make use of to automatically prepare the bindings.
+As standard, there is a Laravel 6 is a service provider you can make use of to automatically prepare the bindings.
 
 ```php
 
@@ -53,7 +53,7 @@ This is the valid list of API keys that authenticate requests. By default we sup
 
 ## Middleware
 
-This package includes two Middleware classes for Laravel 5
+This package includes two Middleware classes for Laravel 6
 
 ### Origami\Api\Middleware\AuthenticateApiKey
 
