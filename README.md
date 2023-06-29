@@ -1,6 +1,6 @@
 # Origami API Package
 
-This package simplifies the process of setting up an API using Laravel 6. Many of the practices utilised in this package are courtesy of [Build APIs you Won’t Hate](https://leanpub.com/build-apis-you-wont-hate) by Phil Sturgeon.
+This package simplifies the process of setting up an API using Laravel 6. Many of the practices utilised in this package are courtesy of [Build APIs you Won't Hate](https://leanpub.com/build-apis-you-wont-hate) by Phil Sturgeon.
 
 ## Installation
 
@@ -12,23 +12,9 @@ Install this package through Composer.
 
 This package is designed to work with Laravel >= 6 currently.
 
-### Service Provider
-
-As standard, there is a Laravel 6 is a service provider you can make use of to automatically prepare the bindings.
-
-```php
-
-// app/config/app.php
-
-‘providers’ => [
-    ‘…’,
-    ‘Origami\Api\ApiServiceProvider’
-];
-```
-
 ### Configuration
 
-There are some API configuration options that you’ll want to overwrite. First, publish the default configuration.
+There are some API configuration options that you'll want to overwrite. First, publish the default configuration.
 
 ```bash
 php artisan vendor:publish
@@ -40,8 +26,8 @@ This will add a new configuration file to: `config/api.php`.
 <?php
 return array(
 
-	‘keys’ => [
-		env(‘API_KEY’, ‘secret’)
+	'keys' => [
+		env('API_KEY', 'secret')
 	],
 
 );
@@ -60,10 +46,10 @@ This package includes two Middleware classes for Laravel 6
 The **AuthenticateApiKey** Middleware is designed to guard Api routes against unauthorised access. We recommend you include it on all routes as follows, unless you have a public API.
 
 ```php
-Route::group([‘prefix’ => ‘api/v1’, ‘namespace’ => ‘Api’, ‘middleware’ => ‘Origami\Api\Middleware\AuthenticateApiKey’], function()
+Route::group(['prefix' => 'api/v1', 'namespace' => 'Api', 'middleware' => 'Origami\Api\Middleware\AuthenticateApiKey'], function()
 {
-    Route::get(‘tasks/{id}’, ‘Tasks@show’);
-		Route::post(‘tasks/{id}’, ‘Tasks@update’);
+	Route::get('tasks/{id}', 'Tasks@show');
+	Route::post('tasks/{id}', 'Tasks@update');
 });
 ```
 
@@ -81,7 +67,7 @@ You can use the API Response class in your controller by using the `response` he
 ```php
 	public function index()
 	{
-		$items = new Collection([‘one’,’two’,’three’]);
+		$items = new Collection(['one','two','three']);
 
 		// Calling with a single argument returns a json response
 		return $this->response($items);
@@ -93,7 +79,7 @@ or
 ```php
 	public function index()
 	{
-		$items = new Collection([‘one’,’two’,’three’]);
+		$items = new Collection(['one','two','three']);
 
 		// Calling with no argument returns the response object
 		return $this->response()->data($items);
@@ -127,10 +113,10 @@ There are three helper methods on the response object
 Routes: app/Http/routes.php
 ```php
 <?php
-	Route::group([‘prefix’ => ‘api/v1’, ‘namespace’ => ‘Api’, ‘middleware’ => ‘Origami\Api\Middleware\AuthenticateApiKey’], function()
+	Route::group(['prefix' => 'api/v1', 'namespace' => 'Api', 'middleware' => 'Origami\Api\Middleware\AuthenticateApiKey'], function()
 {
-    Route::get(‘items’, ‘Items@index’);
-    Route::get(‘tasks/{id}’, ‘Tasks@show’);
+    Route::get('items', 'Items@index');
+    Route::get('tasks/{id}', 'Tasks@show');
 });
 ```
 
@@ -156,7 +142,7 @@ class Items extends ApiController {
 		$item = Item::find($id);
 
 		if ( ! $item ) {
-			return $this->response()->errorNotFound(‘Item not found’);
+			return $this->response()->errorNotFound('Item not found');
 		}
 
 		return $this->response()->resourceItem($item, new ItemTransformer);
@@ -176,9 +162,9 @@ class ItemTransformer extends Transformer {
     public function transform(Item $item)
     {
         return [
-            ‘id’ => $item->id,
-            ‘title’ => $task->title,
-            ‘created_at’ => $task->created_at->toDateTimeString()
+            'id' => $item->id,
+            'title' => $task->title,
+            'created_at' => $task->created_at->toDateTimeString()
         ];
     }
 
