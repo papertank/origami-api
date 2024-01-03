@@ -34,7 +34,7 @@ class SetApiVersion
         $version = $this->api->getVersion($request->header('x-api-version'));
 
         if ($version) {
-            $this->api->setVersion($version);
+            $this->api->setCurrentVersion($version);
         }
 
         return $next($request);
